@@ -1,0 +1,120 @@
+<!-- Main content -->
+<section class="content pt-3 pt-lg-3">
+    <div class="container-fluid ">
+        <div class="row justify-content-lg-center">
+            <!-- left column -->
+            <div class="col-lg-7  ">
+                <!-- jquery validation -->
+                <div class="card card-primary">
+                    <div class="card-header d-flex justify-content-center">
+                        <h3 class="card-title">Agregar Empleados</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form id="quickForm" [formGroup]="fromRegisterEmpleado" novalidate>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="tipoDocumento">Tipo de documento</label>
+                                    <select type="text" formControlName="tipoDocumento" class="form-control"
+                                        id="tipoDocumento" placeholder="Seleccione una opcion">
+                                        <option value="">DNI</option>
+                                        <option value="">CE</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="numeroDocumento">Documento de identidad</label>
+                                    <input type="text" formControlName="numeroDocumento" class="form-control"
+                                        id="numeroDocumento" placeholder="Ingrese el documento">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-12">
+                                    <label for="nombreEmpleado">Nombres</label>
+                                    <input type="text" formControlName="nombreEmpleado" class="form-control"
+                                        id="nombreEmpleado" placeholder="Ingrese los nombres">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-6">
+                                    <label for="apellidosEmpleado">Apellido Paterno</label>
+                                    <input type="text" formControlName="apellidosEmpleado" class="form-control"
+                                        id="apellidosEmpleado" placeholder="Ingrese el apellido paterno">
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for="apellidosEmpleadoMaterno">Apellido Materno</label>
+                                    <input type="text" formControlName="apellidosEmpleadoMaterno" class="form-control"
+                                        id="apellidosEmpleadoMaterno" placeholder="Ingrese el apellido materno">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="tipoGenero">Genero</label>
+                                    <select type="text" formControlName="tipoGenero" class="form-control"
+                                        id="tipoGenero" placeholder="Seleccione una opcion">
+                                        <option value="MASCULINO">MASCULINO</option>
+                                        <option value="FEMENINO">FEMENINO</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="fechaEmpleado">Fecha de Nacimiento</label>
+                                    <input type="date" formControlName="fechaEmpleado" class="form-control"
+                                        id="fechaEmpleado">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="correoEmpleado">Correo Electronico</label>
+                                    <input type="email" formControlName="correoEmpleado" class="form-control"
+                                        id="correoEmpleado" placeholder="Ingrese correo lectronico">
+                                    <div class="invalid-feedback" *ngIf="correoEmpleado.invalid &&
+                                        (correoEmpleado.dirty || correoEmpleado.touched)">
+
+                                        <div *ngIf="correoEmpleado.invalid">
+                                            Formato de correo invalido
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="telefonoEmpleado">Telefono</label>
+                                    <input type="text" formControlName="telefonoEmpleado" class="form-control"
+                                        id="telefonoEmpleado" placeholder="Ingrese numero de celular">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-8">
+                                    <label for="direccionEmpleado">Dirección</label>
+                                    <input type="text" formControlName="direccionEmpleado" class="form-control"
+                                        id="direccionEmpleado" placeholder="Ingrese direccón de domicilio">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="tipoCargo">Estado civil</label>
+                                    <select type="text" formControlName="tipoCargo" class="form-control" id="tipoCargo"
+                                        placeholder="Seleccione una opcion">
+                                        <option value="CASADO (A)">CASADO (A)</option>
+                                        <option value="SOLTERO (A)">SOLTERO (A)</option>
+                                        <option value="VIUDO (A)">VIUDO (A)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer d-flex justify-content-lg-center">
+                            <div class="col-lg-6">
+                                <button type="submit" class="btn btn-info w-100"
+                                    [disabled]="fromRegisterEmpleado.invalid"
+                                    (click)="registrarEmpleado()">Agregar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.card -->
+            </div>
+            <!--/.col (left) -->
+        </div>
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->

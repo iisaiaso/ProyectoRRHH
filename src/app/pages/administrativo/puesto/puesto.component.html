@@ -1,0 +1,117 @@
+<!-- Main content -->
+<section class="content pt-4">
+    <div class="container-fluid">
+        <!-- Main row -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card card-primary">
+                    <div class="card-header border-transparent">
+                        <h3 class="card-title">Puesto de trabajos</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body px-3">
+                        <!-- Info Boxes Style 2 -->
+                        <div *ngFor="let puesto of list" class="info-box {{puesto.color}}">
+                            <span class="info-box-icon"><i class="fa {{puesto.icono}}"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">{{puesto.nombre}}</span>
+                                <span class="info-box-number">{{puesto.sueldo}}</span>
+                            </div>
+                            <div class="row">
+                                <span class="info-box-icono">
+                                    <a href=""><i class="fa fa-pen-square text-white"></i></a>
+                                </span>
+                                <span class="info-box-icono">
+                                    <a href=""><i class="fa fa-trash text-danger"></i></a>
+                                </span>
+                            </div>
+
+                            <!-- /.info-box-content -->
+                        </div>
+
+                        <!-- /.info-box -->
+                    </div>
+                    <div class="card-footer clearfix">
+                        <a href="javascript:void(0)" class="btn btn-sm btn-info float-right">Crear Nuevo</a>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col -->
+
+
+            <!-- Left col -->
+            <div class="col-md-8">
+                <!-- TABLE: LATEST ORDERS -->
+                <div class="card card-primary">
+                    <div class="card-header border-transparent">
+                        <h3 class="card-title">Asignar Puesto de trabajo a empleado</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Documento</th>
+                                        <th>Nombres</th>
+                                        <th>Correo</th>
+                                        <th>Puesto</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let empleado of listEmpleado">
+                                        <td>{{empleado.documento}}</td>
+                                        <td>{{empleado.nombre}} {{empleado.apePaterno}} {{empleado.apeMaterno}}</td>
+                                        <td>
+                                            {{empleado.correo}}
+                                        </td>
+                                        <td>
+                                            <div *ngFor="let puesto of list">
+                                                <span *ngIf="empleado.puestoId == puesto.id"
+                                                    class="badge {{puesto.color}}">{{puesto.nombre}}
+                                                </span>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <button class="btn btn-warning btn-sm">
+                                                <i class="fas fa-pencil-alt">
+                                                </i>
+                                                Asignar
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer clearfix">
+                        <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Order</a>
+                        <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a>
+                    </div>
+                    <!-- /.card-footer -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div><!--/. container-fluid -->
+</section>
+<!-- /.content -->
+<!-- </div> -->
+<!-- /.content-wrapper -->

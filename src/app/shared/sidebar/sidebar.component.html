@@ -1,0 +1,326 @@
+<!-- Main Sidebar Container -->
+<!-- {{listIde|json}} -->
+
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="../../index3.html" class="brand-link">
+        <img src="./assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+            style="opacity: .8">
+        <span class="brand-text font-weight-light">DeViio RRHH</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="./assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+                <a href="#" class="d-block">{{listEm}}</a>
+            </div>
+        </div>
+
+        <!-- SidebarSearch Form -->
+        <div class="form-inline">
+            <div class="input-group" data-widget="sidebar-search">
+                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-sidebar">
+                        <i class="fas fa-search fa-fw"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+
+                <li class="nav-item" *ngFor="let menu of list">
+                    <a href="/dashboard" class="nav-link" *ngIf="menu.id==1">
+                        <i class="nav-icon {{menu.icono}}"></i>
+                        <p>
+                            {{menu.titulo}}
+                            <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-warning right"></span>
+                        </p>
+                    </a>
+                </li>
+                <!--  -->
+                <li class="nav-item" *ngFor="let menu of list">
+                    <a href="#" class="nav-link" *ngIf="menu.id==2">
+                        <i class="nav-icon {{menu.icono}}"></i>
+                        <p>
+                            {{menu.titulo}}
+                            <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-warning right">{{listEmpleado}}</span>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" *ngFor="let menus of listId">
+                        <li class="nav-item" *ngIf="menus.padreID==2">
+                            <a href="{{menus.submenuUrl}}" class="nav-link">
+                                <i class="{{menus.submenuIcono}} nav-icon ml-2"></i>
+                                <p>{{menus.submenuTitulo}}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!--  -->
+                <li class="nav-item" *ngFor="let menu of list">
+                    <a href="#" class="nav-link" *ngIf="menu.id==3">
+                        <i class="nav-icon {{menu.icono}}"></i>
+                        <p>
+                            {{menu.titulo}}
+                            <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-info right">{{listUsuario}}</span>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" *ngFor="let menus of listId">
+                        <li class="nav-item" *ngIf="menus.padreID==3">
+                            <a href="{{menus.submenuUrl}}" class="nav-link">
+                                <i class="{{menus.submenuIcono}} nav-icon ml-2"></i>
+                                <p>{{menus.submenuTitulo}}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!--  -->
+                <li class="nav-item" *ngFor="let menu of list">
+                    <a href="#" class="nav-link" *ngIf="menu.id==4">
+                        <i class="nav-icon {{menu.icono}}"></i>
+                        <p>
+                            {{menu.titulo}}
+                            <i class="fas fa-angle-left right"></i>
+
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" *ngFor="let menus of listId">
+                        <div *ngIf="menus.padreID==4">
+                            <li class="nav-item" *ngIf="menus.idSubmenu==9">
+                                <a href="{{menus.submenuUrl}}" class="nav-link">
+                                    <i class="{{menus.submenuIcono}} nav-icon ml-2"></i>
+                                    <p>{{menus.submenuTitulo}}</p>
+                                    <span class="badge badge-success right">{{listPuesto}}</span>
+                                </a>
+                            </li>
+                            <li class="nav-item" *ngIf="menus.idSubmenu==10">
+                                <a href="{{menus.submenuUrl}}" class="nav-link">
+                                    <i class="{{menus.submenuIcono}} nav-icon ml-2"></i>
+                                    <p>{{menus.submenuTitulo}}</p>
+                                    <span class="badge badge-danger right">2</span>
+                                </a>
+                            </li>
+                        </div>
+                    </ul>
+                </li>
+
+                <!-- <li class="nav-item">
+                    <a href="/dashboard" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Dashboard
+                            <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-warning right">2</span>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa fa-users"></i>
+                        <p>
+                            Empleado
+                            <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-warning right">2</span>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="dashboard/empleado" class="nav-link">
+                                <i class="fa fa-list nav-icon ml-2"></i>
+                                <p>Listar</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="dashboard/agregar-empleado" class="nav-link">
+                                <i class="fas fa-plus nav-icon ml-2"></i>
+                                <p>Agregar</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                                <i class="fas fa-pencil-alt nav-icon ml-2"></i>
+                                <p>Editar</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                                <i class="fa fa-trash-alt nav-icon ml-2"></i>
+                                <p>Eliminar</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa fa-user-friends"></i>
+                        <p>
+                            Usuario
+                            <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-warning right">2</span>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="dashboard/usuario" class="nav-link">
+                                <i class="fa fa-list nav-icon ml-2"></i>
+                                <p>Listar</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="dashboard/agregar-usuario" class="nav-link">
+                                <i class="fas fa-plus nav-icon ml-2"></i>
+                                <p>Agregar</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                                <i class="fas fa-pencil-alt nav-icon ml-2"></i>
+                                <p>Editar</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                                <i class="fa fa-trash-alt nav-icon ml-2"></i>
+                                <p>Eliminar</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-building"></i>
+                        <p>
+                            Administrativo
+                            <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-warning right">2</span>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="dashboard/puesto" class="nav-link">
+                                <i class="fas fa-sitemap nav-icon ml-2"></i>
+                                <p>Puesto de Empleado</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="dashboard/horario" class="nav-link">
+                                <i class="fas fa-calendar-week nav-icon ml-2"></i>
+                                <p>Asinganar Horario</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li> -->
+
+                <!-- <li class="nav-item">
+                    <a href="../widgets.html" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Widgets
+                            <span class="right badge badge-danger">New</span>
+                        </p>
+                    </a>
+                </li> -->
+                <!-- <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Layout Options
+                            <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-info right">6</span>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="../layout/top-nav.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Top Navigation</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../layout/top-nav-sidebar.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Top Navigation + Sidebar</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../layout/boxed.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Boxed</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../layout/fixed-sidebar.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Fixed Sidebar</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../layout/fixed-sidebar-custom.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Fixed Sidebar <small>+ Custom Area</small></p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../layout/fixed-topnav.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Fixed Navbar</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../layout/fixed-footer.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Fixed Footer</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../layout/collapsed-sidebar.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Collapsed Sidebar</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li> -->
+
+                <!-- <li class="nav-header">EXAMPLES</li>
+                <li class="nav-item">
+                    <a href="../calendar.html" class="nav-link">
+                        <i class="nav-icon far fa-calendar-alt"></i>
+                        <p>
+                            Calendar
+                            <span class="badge badge-info right">2</span>
+                        </p>
+                    </a>
+                </li> -->
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>

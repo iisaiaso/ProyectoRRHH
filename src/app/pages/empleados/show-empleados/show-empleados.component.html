@@ -1,0 +1,268 @@
+<!-- Main content -->
+<section class="content pt-3">
+    <div class="container-fluid">
+        <!-- /.row -->
+        <div class="row justify-content-center">
+            <div class="col-11">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        <h3 class="card-title">Lista de los empleados</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-head-fixed text-nowrap">
+                            <thead class="text-center">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Documento</th>
+                                    <th>Nombres</th>
+                                    <th>Apellidos</th>
+                                    <th>Genero</th>
+                                    <th>Correo</th>
+                                    <th>Telefono</th>
+                                    <th>Fecha Nacimiento </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+
+                                <tr *ngFor="let empleado of listEmpleado;let i=index" class="text-sm">
+                                    <td>{{i+1}}</td>
+                                    <td>{{empleado.documento}}</td>
+                                    <td>{{empleado.nombre}}</td>
+                                    <td>{{empleado.apePaterno}} {{empleado.apeMaterno}}</td>
+                                    <td>{{empleado.genero}}</td>
+                                    <td class="text-xs">{{empleado.correo}}</td>
+                                    <td>{{empleado.telefono}}</td>
+                                    <td>{{empleado.fechNacimiento|date}}</td>
+                                    <td class=" text-right">
+                                        <div class="row justify-content-between">
+                                            <button class="btn btn-info btn-sm" (click)="detalleEmpleado(empleado.id)"
+                                                data-toggle="modal" data-target="#staticBackdropView">
+                                                <i class="fa fa-eye">
+                                                </i>
+                                                <!-- Ver -->
+                                            </button>
+                                            <button class="btn btn-primary btn-sm" (click)="editarEmpleado(empleado.id)"
+                                                data-toggle="modal" data-target="#staticBackdrop">
+                                                <i class="fas fa-pencil-alt">
+                                                </i>
+                                                <!-- Editar -->
+                                            </button>
+                                            <button class="btn btn-danger btn-sm"
+                                                (click)="eliminarEmpleado(empleado.id)">
+                                                <i class="fas fa-trash">
+                                                </i>
+                                                <!-- Eliminar -->
+                                            </button>
+                                        </div>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Actualizar Empleado</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="quickForm" [formGroup]="fromUpdateEmpleado" novalidate>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="tipoDocumento">Tipo de documento</label>
+                                    <select type="text" formControlName="tipoDocumento" class="form-control"
+                                        id="tipoDocumento" placeholder="Seleccione una opcion">
+                                        <option value="DNI">DNI</option>
+                                        <option value="CE">CE</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="numeroDocumento">Documento de identidad</label>
+                                    <input type="text" formControlName="numeroDocumento" class="form-control"
+                                        id="numeroDocumento" placeholder="Ingrese el documento">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-12">
+                                    <label for="nombreEmpleado">Nombres</label>
+                                    <input type="text" formControlName="nombreEmpleado" class="form-control"
+                                        id="nombreEmpleado" placeholder="Ingrese los nombres">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-6">
+                                    <label for="apellidosEmpleado">Apellido Paterno</label>
+                                    <input type="text" formControlName="apellidosEmpleado" class="form-control"
+                                        id="apellidosEmpleado" placeholder="Ingrese el apellido paterno">
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for="apellidosEmpleadoMaterno">Apellido Materno</label>
+                                    <input type="text" formControlName="apellidosEmpleadoMaterno" class="form-control"
+                                        id="apellidosEmpleadoMaterno" placeholder="Ingrese el apellido materno">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="tipoGenero">Genero</label>
+                                    <select type="text" formControlName="tipoGenero" class="form-control"
+                                        id="tipoGenero" placeholder="Seleccione una opcion">
+                                        <option value="MASCULINO">MASCULINO</option>
+                                        <option value="FEMENINO">FEMENINO</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="fechaEmpleado">Fecha de Nacimiento</label>
+                                    <input type="date" formControlName="fechaEmpleado" class="form-control"
+                                        id="fechaEmpleado">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="correoEmpleado">Correo Electronico</label>
+                                    <input type="email" formControlName="correoEmpleado" class="form-control"
+                                        id="correoEmpleado" placeholder="Ingrese correo lectronico">
+                                    <div class="invalid-feedback" *ngIf="correoEmpleado.invalid &&
+                                        (correoEmpleado.dirty || correoEmpleado.touched)">
+
+                                        <div *ngIf="correoEmpleado.invalid">
+                                            Formato de correo invalido
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="telefonoEmpleado">Telefono</label>
+                                    <input type="text" formControlName="telefonoEmpleado" class="form-control"
+                                        id="telefonoEmpleado" placeholder="Ingrese numero de celular">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-8">
+                                    <label for="direccionEmpleado">Dirección</label>
+                                    <input type="text" formControlName="direccionEmpleado" class="form-control"
+                                        id="direccionEmpleado" placeholder="Ingrese direccón de domicilio">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="tipoCargo">Estado civil</label>
+                                    <select type="text" formControlName="tipoCargo" class="form-control" id="tipoCargo"
+                                        placeholder="Seleccione una opcion">
+                                        <option value="CASADO (A)">CASADO (A)</option>
+                                        <option value="SOLTERO (A)">SOLTERO (A)</option>
+                                        <option value="VUIDO (A)">VUIDO (A)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer d-flex justify-content-lg-center">
+                            <div class="col-lg-6">
+                                <button type="submit" class="btn btn-info w-100" [disabled]="fromUpdateEmpleado.invalid"
+                                    (click)="registrarEmpleado()">Agregar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Understood</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="staticBackdropView" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Descripcion del empleado</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row justify-content-center " *ngFor="let empleado of listEmpleado">
+                        <div class="col-11 d-flex align-items-stretch flex-column" *ngIf="empleado.id == detalle">
+                            <div class="card bg-secondary d-flex flex-fill">
+                                <div class="card-header text-muted border-bottom-0">
+                                    {{empleado.documento}}
+                                </div>
+                                <div class="card-body pt-0">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <h2 class="lead text-md"><b>{{empleado.nombre}} {{empleado.apePaterno}}</b>
+                                            </h2>
+                                            <p class="text-muted text-xs mb-2"><b>Correo: </b>{{empleado.correo}}</p>
+                                            <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                <li class="small">
+                                                    <span class="fa-li"><i class="fa fa-address-card"></i>
+                                                    </span>
+                                                    Dirección: {{empleado.direccion}}
+                                                </li>
+                                                <li class="small mt-1">
+                                                    <span class="fa-li"><i class="fas fa- fa-phone"></i>
+                                                    </span> Telefono #:
+                                                    {{empleado.telefono}}
+                                                </li>
+                                                <li class="small">
+                                                    <span class="fa-li"><i class="fa fa-calendar"></i>
+                                                    </span>
+                                                    Fecha Nacimiento: {{empleado.fechNacimiento|date}}
+                                                </li>
+                                                <li class="small mt-1" *ngFor="let puesto of puesto">
+                                                    <div *ngIf="empleado.puestoId == puesto.id">
+                                                        <span class="fa-li"><i class="fa fa-building"></i>
+                                                        </span> Puesto:
+                                                        {{puesto.nombre}}
+                                                    </div>
+                                                </li>
+                                                <li class="small">
+                                                    <span class="fa-li"><i class="fa fa-users"></i>
+                                                    </span>
+                                                    Estado Civil: {{empleado.estCivil}}
+                                                </li>
+                                                <li class="small mt-1">
+                                                    <span class="fa-li"><i class="fa fa-venus-mars"></i>
+                                                    </span> Genero #:
+                                                    {{empleado.genero}}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class=" d-flex col-4 text-center align-items-center">
+                                            <img src="./assets/dist/img/user1-128x128.jpg" alt="user-avatar"
+                                                class="img-circle img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

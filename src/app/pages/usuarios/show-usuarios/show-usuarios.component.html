@@ -1,0 +1,123 @@
+<section class="content pt-3">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <!-- PRODUCT LIST -->
+                <div class="card">
+                    <div class="card-header bg-white">
+                        <h3 class="card-title">Listado de usuarios</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body p-0">
+                        <ul class="products-list product-list-in-card pl-2 pr-2">
+                            <li class="item" *ngFor="let usuario of list">
+                                <div *ngFor="let empleado of listEmpleado">
+                                    <div class="product-title d-flex justify-content-between"
+                                        *ngIf="empleado.id == usuario.idEmpleado">
+                                        <span class="text-sm">{{empleado.nombre}} {{empleado.apePaterno}}
+                                            {{empleado.apeMaterno}}</span>
+                                        <span class="font-weight-light text-sm">{{empleado.genero}}</span>
+                                        <div *ngFor="let puesto of listP">
+                                            <span *ngIf="empleado.puestoId == puesto.id"
+                                                class="badge {{puesto.color}}">{{puesto.nombre}}</span>
+                                        </div>
+                                        <button class="btn btn-info btn-xs">
+                                            <i class="fa fa-eye">
+                                            </i>
+                                            Ver mas
+                                        </button>
+                                    </div>
+                                    <span class="product-description font-weight-light mt-1"
+                                        *ngIf="empleado.id == usuario.idEmpleado">
+                                        {{usuario.correo}}
+                                    </span>
+                                </div>
+                            </li>
+                            <!-- /.item -->
+                        </ul>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer text-center">
+                        <a href="javascript:void(0)" class="uppercase">View All Products</a>
+                    </div>
+                    <!-- /.card-footer -->
+                </div>
+                <!-- /.card -->
+            </div>
+
+            <!-- Left col -->
+            <div class="col-md-8">
+                <!-- TABLE: LATEST ORDERS -->
+                <div class="card card-primary">
+                    <div class="card-header border-transparent">
+                        <h3 class="card-title">Asignar Usuario al empleado</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Documento</th>
+                                        <th>Nombres</th>
+                                        <th>Genero</th>
+                                        <th>Correo</th>
+                                        <th>Puesto</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let empleado of listEmpleado" class="text-xs">
+                                        <td>{{empleado.documento}}</td>
+                                        <td>{{empleado.nombre}} {{empleado.apePaterno}} {{empleado.apeMaterno}}</td>
+                                        <td>{{empleado.genero}}</td>
+                                        <td>
+                                            {{empleado.correo}}
+                                        </td>
+                                        <td class="text-sm">
+                                            <div *ngFor="let puesto of listP">
+                                                <span *ngIf="empleado.puestoId == puesto.id"
+                                                    class="badge {{puesto.color}}"
+                                                    style="padding-top: 2px;">{{puesto.nombre}}
+                                                </span>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <button class="btn btn-warning btn-xs">
+                                                <i class="fas fa-pencil-alt">
+                                                </i>
+                                                Asignar
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer clearfix">
+                        <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Order</a>
+                        <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a>
+                    </div>
+                    <!-- /.card-footer -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+    </div>
+</section>
